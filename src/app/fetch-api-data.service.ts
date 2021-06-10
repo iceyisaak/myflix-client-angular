@@ -53,7 +53,7 @@ export class GetAllMoviesService {
 
     return this.http.get(apiUrl + 'movies', {
       headers: new HttpHeaders({
-        Authorization: 'Bearer' + token
+        Authorization: 'Bearer ' + token
       })
     }).pipe(
       map(this.extractResponseData),

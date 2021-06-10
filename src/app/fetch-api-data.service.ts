@@ -19,25 +19,6 @@ export class UserRegistrationService {
 
   }
 
-  getAllMovies(): Observable<any> {
-    const token = localStorage.getItem('token')
-
-    return this.http.get(apiUrl + 'movies', {
-      headers: new HttpHeaders({
-        Authorization: 'Bearer' + token
-      })
-    }).pipe(
-      map(this.extractResponseData),
-      catchError(this.handleError)
-    )
-  }
-
-  // Non-type response extraction
-  private extractResponseData(res: Response): any {
-    const body = res;
-    return body || {}
-  }
-
 
   // Making API calls for UserRegistration endpoint
   public userRegistration(userDetails: any): Observable<any> {
@@ -60,5 +41,29 @@ export class UserRegistrationService {
     return throwError(
       'An Error has occurred. Please try again later.'
     )
+  }
+}
+
+export class GetAllMoviesService {
+  constructor(private http: HttpClient) {
+
+  }
+  getAllMovies(): Observable<any> {
+    const token = localStorage.getItem('token')
+
+    return this.http.get(apiUrl + 'movies', {
+      headers: new HttpHeaders({
+        Authorization: 'Bearer' + token
+      })
+    }).pipe(
+      map(this.extractResponseData),
+      catchError(this.handleError)
+    )
+  }
+
+  // Non-type response extraction
+  private extractResponseData(res: Response): any {
+    const body = res;
+    return body || {}
   }
 }

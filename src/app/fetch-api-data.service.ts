@@ -7,18 +7,16 @@ import { map } from 'rxjs/operators';
 // Declare API
 const apiUrl = 'https://myflix-20210211.herokuapp.com/movies';
 
+
+
 @Injectable({
   providedIn: 'root'
 })
-
-
 export class UserRegistrationService {
 
   // Inject HttpClient Module to Constructor Params
   constructor(private http: HttpClient) {
-
   }
-
 
   // Making API calls for UserRegistration endpoint
   public userRegistration(userDetails: any): Observable<any> {
@@ -42,12 +40,16 @@ export class UserRegistrationService {
       'An Error has occurred. Please try again later.'
     )
   }
+
 }
 
+@Injectable({
+  providedIn: 'root'
+})
 export class GetAllMoviesService {
   constructor(private http: HttpClient) {
-
   }
+
   getAllMovies(): Observable<any> {
     const token = localStorage.getItem('token')
 
@@ -62,8 +64,26 @@ export class GetAllMoviesService {
   }
 
   // Non-type response extraction
-  private extractResponseData(res: Response): any {
+  private extractResponseData(res: Response | Object): any {
     const body = res;
     return body || {}
   }
+
+  private handleError(error: HttpErrorResponse): any {
+    if (error.error instanceof ErrorEvent) {
+      console.error('Some error occurred: ', error.error.message)
+    } else {
+      console.error(
+        `Error Status Code ${error.status}, `
+        +
+        `Error Body is: ${error.error}`
+      )
+    }
+    return throwError(
+      'An Error has occurred. Please try again later.'
+    )
+  }
 }
+
+
+

@@ -388,9 +388,82 @@ export class deleteUserService {
 
   deleteUser(): Observable<any> {
     const token = localStorage.getItem('user')
-    return this.http
+    return this.http.delete(`${apiUrl}users/:Username`, {
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${token}`
+      })
+    }).pipe(
+      map(this.extractResponseData),
+      catchError(this.handleError)
+    )
+  }
+
+  private extractResponseData(res: Response | Object): any {
+    const body = res;
+    return body || {}
+  }
+
+  private handleError(error: HttpErrorResponse): any {
+    if (error.error instanceof ErrorEvent) {
+      console.error('Some error occurred: ', error.error.message)
+    } else {
+      console.error(
+        `Error Status Code ${error.status}
+        
+        Error Body is: ${error.error}
+        `
+      )
+    }
+    return throwError(
+      'An Error has occurred. Please try again later.'
+    )
   }
 }
 
 
+
 // Delete a movie from the favorite movies
+@Injectable({
+  providedIn: 'root'
+})
+export class deleteOneMovieService {
+  constructor(private http: HttpClient) {
+  }
+
+  deleteOneMovie(): Observable<any> {
+
+    const token = localStorage.getItem('token');
+
+    return this.http.delete(`${apiUrl}users/:Username/Movies/:MovieID`, {
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${token}`
+      })
+    }).pipe(
+      map(this.extractResponseData),
+      catchError(this.handleError)
+    )
+  }
+
+  private extractResponseData(res: Response | Object): any {
+    const body = res;
+    return body || {}
+  }
+
+  private handleError(error: HttpErrorResponse): any {
+    if (error.error instanceof ErrorEvent) {
+      console.error('Some error occurred: ', error.error.message)
+    } else {
+      console.error(
+        `Error Status Code ${error.status}
+        
+        Error Body is: ${error.error}
+        `
+      )
+    }
+    return throwError(
+      'An Error has occurred. Please try again later.'
+    )
+  }
+
+
+}

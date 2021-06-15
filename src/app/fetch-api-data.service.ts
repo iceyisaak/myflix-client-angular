@@ -1,9 +1,8 @@
-import { Injectable, Injectable, Injectable, Injectable, Injectable, Injectable, Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { catchError } from 'rxjs/internal/operators';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { isRegExp } from 'util';
 
 // Declare API
 const apiUrl = 'https://myflix-20210211.herokuapp.com/movies/';

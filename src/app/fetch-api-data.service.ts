@@ -5,7 +5,7 @@ import { Observable, throwError } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 // Declare API
-const apiUrl = 'https://myflix-20210211.herokuapp.com/movies/';
+const apiUrl = 'https://myflix-20210211.herokuapp.com/';
 
 
 // userRegistration
@@ -47,7 +47,7 @@ export class UserRegistrationService {
 @Injectable({
   providedIn: 'root'
 })
-export class userLoginService {
+export class UserLoginService {
   constructor(private http: HttpClient) {
   }
 
@@ -106,7 +106,7 @@ export class GetAllMoviesService {
 @Injectable({
   providedIn: 'root'
 })
-export class getOneMovieService {
+export class GetOneMovieService {
   constructor(private http: HttpClient) {
   }
 
@@ -150,7 +150,7 @@ export class getOneMovieService {
 @Injectable({
   providedIn: 'root'
 })
-export class getDirectorService {
+export class GetDirectorService {
   constructor(private http: HttpClient) {
   }
 
@@ -192,7 +192,7 @@ export class getDirectorService {
 @Injectable({
   providedIn: 'root'
 })
-export class getGenreService {
+export class GetGenreService {
   constructor(private http: HttpClient) {
 
   }
@@ -239,7 +239,7 @@ export class getGenreService {
   providedIn: 'root'
 })
 
-export class getUserService {
+export class GetUserService {
   constructor(private http: HttpClient) {
 
   }
@@ -286,7 +286,7 @@ export class getUserService {
 @Injectable({
   providedIn: 'root'
 })
-export class addFavouriteMovieService {
+export class AddFavouriteMovieService {
   constructor(private http: HttpClient) {
 
   }
@@ -329,7 +329,7 @@ export class addFavouriteMovieService {
 @Injectable({
   providedIn: 'root'
 })
-export class editUserService {
+export class EditUserService {
   constructor(private http: HttpClient) {
 
   }
@@ -381,7 +381,7 @@ export class editUserService {
 @Injectable({
   providedIn: 'root'
 })
-export class deleteUserService {
+export class DeleteUserService {
   constructor(private http: HttpClient) {
   }
 
@@ -425,7 +425,7 @@ export class deleteUserService {
 @Injectable({
   providedIn: 'root'
 })
-export class deleteOneMovieService {
+export class DeleteOneMovieService {
   constructor(private http: HttpClient) {
   }
 

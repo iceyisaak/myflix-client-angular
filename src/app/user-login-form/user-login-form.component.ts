@@ -1,4 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
 import { MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { UserLoginService } from '../fetch-api-data.service';
@@ -48,6 +50,8 @@ export class UserLoginFormComponent implements OnInit {
         )
       }
     )
+    this.router.navigate(['movies'])
+
   }
 
 }

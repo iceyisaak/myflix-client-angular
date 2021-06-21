@@ -20,7 +20,8 @@ export class UserLoginFormComponent implements OnInit {
   constructor(
     public userLogin: UserLoginService,
     public dialogRef: MatDialogRef<UserLoginFormComponent>,
-    public snackBar: MatSnackBar
+    public snackBar: MatSnackBar,
+    public router: Router
   ) { }
 
   ngOnInit(): void {

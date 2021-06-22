@@ -27,31 +27,54 @@ export class UserLoginFormComponent implements OnInit {
   ngOnInit(): void {
   }
 
+
   loginUser(): void {
-    this.userLogin.userLogin(this.loginData).subscribe(
-      (result) => {
-        this.dialogRef.close()
-        console.log(result)
-        this.snackBar.open(
-          result,
-          'OK',
-          {
-            duration: 2000
-          }
-        )
-      },
-      (result) => {
-        console.log(result)
-        this.snackBar.open(
-          result,
-          'OK',
-          {
-            duration: 2000
-          }
-        )
-      }
-    )
-    this.router.navigate(['movies'])
+
+    this.userLogin
+      .userLogin(this.loginData)
+      .subscribe(
+
+        (response) => {
+
+          this.dialogRef.close()
+
+          console.log(response)
+
+          localStorage.setItem(
+            'user',
+            response.user.Username
+          )
+
+          localStorage.setItem(
+            'token',
+            response.token
+          )
+
+          this.snackBar
+            .open(
+              response,
+              'You are now logged in.',
+              {
+                duration: 2000
+              }
+            )
+          this.router.navigate(['movies'])
+        },
+
+        (response) => {
+
+          console.log(response)
+
+          this.snackBar
+            .open(
+              response,
+              'OK',
+              {
+                duration: 2000
+              }
+            )
+        }
+      )
 
   }
 

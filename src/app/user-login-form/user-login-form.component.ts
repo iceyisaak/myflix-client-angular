@@ -30,51 +30,41 @@ export class UserLoginFormComponent implements OnInit {
 
   loginUser(): void {
 
-    this.userLogin
-      .userLogin(this.loginData)
-      .subscribe(
+    this.userLogin.userLogin(this.loginData).subscribe(
 
-        (response) => {
+      (response) => {
 
-          this.dialogRef.close()
+        this.dialogRef.close()
 
-          console.log(response)
+        console.log(response)
 
-          localStorage.setItem(
-            'user',
-            response.user.Username
-          )
+        localStorage.setItem('user', response.user.Username)
 
-          localStorage.setItem(
-            'token',
-            response.token
-          )
+        localStorage.setItem('token', response.token)
 
-          this.snackBar
-            .open(
-              response,
-              'You are now logged in.',
-              {
-                duration: 2000
-              }
-            )
-          this.router.navigate(['movies'])
-        },
+        this.snackBar.open(
+          response,
+          'You are now logged in.',
+          {
+            duration: 2000
+          }
+        )
+        this.router.navigate(['movies'])
+      },
 
-        (response) => {
+      (response) => {
 
-          console.log(response)
+        console.log(response)
 
-          this.snackBar
-            .open(
-              response,
-              'OK',
-              {
-                duration: 2000
-              }
-            )
-        }
-      )
+        this.snackBar.open(
+          response,
+          'OK',
+          {
+            duration: 2000
+          }
+        )
+      }
+    )
 
   }
 

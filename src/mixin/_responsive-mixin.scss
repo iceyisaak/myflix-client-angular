@@ -1,0 +1,32 @@
+@mixin screenSize($breakpoint) {
+  @if $breakpoint==screen-s {
+    @media only screen and (min-width: 30em) {
+      //480px/16 = 30em
+      @content;
+    }
+  }
+  @if $breakpoint==screen-m {
+    @media only screen and (min-width: 48em) {
+      //768px/16 = 48em
+      @content;
+    }
+  }
+  @if $breakpoint==screen-l {
+    @media only screen and (min-width: 62em) {
+      //992px/16 = 62em
+      @content;
+    }
+  }
+  @if $breakpoint==screen-xl {
+    @media only screen and (min-width: 75em) {
+      //1200px/16 = 75em
+      @content;
+    }
+  }
+  @if $breakpoint==screen-xxl {
+    @media only screen and (min-width: 112.5em) {
+      //1800px/16 = 112.5em
+      @content;
+    }
+  }
+}

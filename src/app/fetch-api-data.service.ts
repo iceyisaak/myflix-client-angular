@@ -244,11 +244,11 @@ export class GetUserService {
 
   }
 
-  getUser(): Observable<any> {
+  getUser(user: any): Observable<any> {
 
     const token = localStorage.getItem('token');
 
-    return this.http.get(`${apiUrl}users/:Username`, {
+    return this.http.get(`${apiUrl}users/${user}`, {
       headers: new HttpHeaders({
         Authorization: `Bearer ${token}`
       })

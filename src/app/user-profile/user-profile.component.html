@@ -8,12 +8,55 @@
           Username
         </p>
         <p>
-          {{user.Name}}
+          {{user.Username}}
         </p>
         <p class="email">
           Email
         </p>
+        <p>
+          {{user.Email}}
+        </p>
+        <p class="birthday">
+          Birthday
+        </p>
+        <p>
+          {{user.Birthday}}
+        </p>
       </div>
+
+      <mat-card-actions>
+        <button>
+          Update My Profile
+        </button>
+        <button>
+          Delete My Profile
+        </button>
+      </mat-card-actions>
+
+      <div class="favouriteMovies">
+        <h1>
+          My Favourite Movies
+        </h1>
+        <div class="favouriteMovieCard" *ngFor="let favouriteMovie of favouriteMovies">
+          <div class="card-header">
+            <mat-card-title>
+              {{favouriteMovie.Title}}
+            </mat-card-title>
+            <br />
+            <mat-card-subtitle>
+              {{favouriteMovie.Director.Name}}
+            </mat-card-subtitle>
+          </div>
+          <mat-card-actions>
+            <mat-icon (click)="unfavouriteOneMovie(favouriteMovie._id, favouriteMovie.Title)">
+              <span>
+                delete
+              </span>
+            </mat-icon>
+          </mat-card-actions>
+        </div>
+      </div>
+
     </div>
   </div>
 </div>

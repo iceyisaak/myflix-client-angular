@@ -425,11 +425,11 @@ export class DeleteUserService {
 @Injectable({
   providedIn: 'root'
 })
-export class DeleteOneMovieService {
+export class UnfavouriteOneMovieService {
   constructor(private http: HttpClient) {
   }
 
-  deleteOneMovie(): Observable<any> {
+  unfavouriteOneMovie(id: string): Observable<any> {
 
     const token = localStorage.getItem('token');
 

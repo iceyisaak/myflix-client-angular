@@ -1,15 +1,17 @@
 <div class="navbar">
   <div class="nav-container">
     <h1 class="h1">
-      myFlix-Angular
+      <a routerLink="/movies">
+        myFlix-Angular
+      </a>
     </h1>
   </div>
   <div class="nav-links">
-    <button>
+    <a routerLink='/profile'>
       Profile
-    </button>
-    <button>
+    </a>
+    <a (click)='logOut()'>
       Logout
-    </button>
+    </a>
   </div>
 </div>

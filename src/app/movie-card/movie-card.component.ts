@@ -6,8 +6,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { GenreDialogComponent } from '../genre-dialog/genre-dialog.component'
-// import {MovieDirectorComponent} from ''
-// import {MovieGenreComponent} from ''
+import { DirectorDialogComponent } from '../director-dialog/director-dialog.component';
+import { DetailsDialogComponent } from '../details-dialog/details-dialog.component';
 
 @Component({
   selector: 'app-movie-card',

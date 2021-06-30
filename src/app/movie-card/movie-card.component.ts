@@ -5,7 +5,7 @@ import { GetUserService } from '../fetch-api-data.service';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
-// import {MovieSypnosisComponent} from ''
+import { GenreDialogComponent } from '../genre-dialog/genre-dialog.component'
 // import {MovieDirectorComponent} from ''
 // import {MovieGenreComponent} from ''
 

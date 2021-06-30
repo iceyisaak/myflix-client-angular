@@ -50,4 +50,17 @@ export class MovieCardComponent implements OnInit {
     )
   }
 
+  showGenreDialog(name: string, description: string): void {
+    this.dialog.open(
+      GenreDialogComponent,
+      {
+        data: {
+          name,
+          description
+        },
+        panelClass: 'genre-dialog'
+      }
+    )
+  }
+
 }

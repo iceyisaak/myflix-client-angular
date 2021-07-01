@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-details-dialog',
@@ -7,7 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DetailsDialogComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    @Inject(MAT_DIALOG_DATA)
+    public summaryData: {
+      title: string,
+      imagePath: string,
+      description: string,
+      director: string,
+      genre: string
+    }
+  ) { }
 
   ngOnInit(): void {
   }

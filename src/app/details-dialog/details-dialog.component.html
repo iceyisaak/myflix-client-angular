@@ -1,1 +1,20 @@
-<p>details-dialog works!</p>
+<div class="details-container">
+  <button mat-icon-button color='dark' [mat-dialog-close]='true'>
+    <mat-icon>
+      close
+    </mat-icon>
+  </button>
+  <img src={{summaryData.imagePath}} alt={{summaryData.title}} width="300">
+  <h1>
+    {{summaryData.title}}
+  </h1>
+  <p>
+    Director:{{summaryData.director}}
+  </p>
+  <p>
+    Genre: {{summaryData.genre}}
+  </p>
+  <p>
+    {{summaryData.description}}
+  </p>
+</div>

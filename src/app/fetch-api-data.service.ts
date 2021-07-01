@@ -154,10 +154,10 @@ export class GetDirectorService {
   constructor(private http: HttpClient) {
   }
 
-  getDirector(): Observable<any> {
+  getDirector(directorName: string): Observable<any> {
     const token = localStorage.getItem('token')
 
-    return this.http.get(`${apiUrl}movies/directors/:Name`, {
+    return this.http.get(`${apiUrl}movies/directors/${directorName}`, {
       headers: new HttpHeaders({
         Authorization: `Bearer ${token}`
       })
@@ -291,17 +291,20 @@ export class AddFavouriteMovieService {
 
   }
 
-  addFavouriteMovie(): Observable<any> {
+  addFavouriteMovie(movieID: string): Observable<any> {
     const token = localStorage.getItem('token');
+    const user = localStorage.getItem('user');
 
-    return this.http.post(`${apiUrl}users/:Username/Movies/:MovieID`, {
-      headers: new HttpHeaders({
-        Authorization: `Bearer ${token}`
-      })
-    }).pipe(
-      map(this.extractResponseData),
-      catchError(this.handleError)
-    )
+    return this.http.post(`${apiUrl}users/${user}/Movies/${movieID}`,
+      movieID,
+      {
+        headers: new HttpHeaders({
+          Authorization: `Bearer ${token}`
+        })
+      }).pipe(
+        map(this.extractResponseData),
+        catchError(this.handleError)
+      )
   }
 
   private extractResponseData(res: Response | Object): any {

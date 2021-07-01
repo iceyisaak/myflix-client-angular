@@ -5,12 +5,12 @@
       <mat-card-title class="movie-card-title">
         {{movie.Title}}
       </mat-card-title>
-      <button>
-        <mat-icon>
-          <span>
+      <button mat-tool-tip='favouriteMovie' mat-icon-button (click)='toggleFavMovie(movie._id)'>
+        <mat-icon color='warn'>
+          <span *ngIf='isFavourite(movie._id); else elseBlock'>
             star_outline
           </span>
-          <ng-template>
+          <ng-template #elseBlock>
             star
           </ng-template>
         </mat-icon>
@@ -21,10 +21,12 @@
       <button class="card-btn" mat-stroked-button (click)='showGenreDialog(movie.Genre.Name,movie.Genre.Description)'>
         Genre
       </button>
-      <button>
+      <button class="card-btn" mat-stroked-button
+        (click)='showDirectorDialog(movie.Director.Name, movie.Director.Bio,movie.Director.Birth,movie.Director.Death)'>
         Director
       </button>
-      <button>
+      <button class="card-btn" mat-stroked-button
+        (click)='showDetailsDialog(movie.Title,movie.ImagePath,movie.Description,movie.Genre.Name,movie.Director.Name)'>
         Summary
       </button>
     </mat-card-actions>

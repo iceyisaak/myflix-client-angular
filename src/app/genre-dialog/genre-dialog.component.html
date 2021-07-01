@@ -1,1 +1,13 @@
-<p>genre-dialog works!</p>
+<div class="genre-container">
+  <button mat-icon-button color='dark' [mat-dialog-close]='true'>
+    <mat-icon>
+      close
+    </mat-icon>
+  </button>
+  <h1>
+    {{data.name}}
+  </h1>
+  <p>
+    {{data.description}}
+  </p>
+</div>

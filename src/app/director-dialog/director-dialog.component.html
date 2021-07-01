@@ -1,1 +1,19 @@
-<p>director-dialog works!</p>
+<div class="director-container">
+  <button mat-icon-button color='dark' [mat-dialog-close]='true'>
+    <mat-icon>
+      close
+    </mat-icon>
+  </button>
+  <h1>
+    {{directorData.name}}
+  </h1>
+  <p>
+    {{directorData.bio}}
+  </p>
+  <p>
+    Born: <span>{{directorData.birth}}</span>
+  </p>
+  <p>
+    Died: <span>{{directorData.death || '-'}}</span>
+  </p>
+</div>

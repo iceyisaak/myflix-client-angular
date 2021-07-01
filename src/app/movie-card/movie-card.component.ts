@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { GetAllMoviesService } from '../fetch-api-data.service';
 import { GetUserService } from '../fetch-api-data.service';
+import { AddFavouriteMovieService } from '../fetch-api-data.service';
+import { GetDirectorService } from '../fetch-api-data.service';
+import { UnfavouriteOneMovieService } from '../fetch-api-data.service';
 
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -22,6 +25,9 @@ export class MovieCardComponent implements OnInit {
   constructor(
     public fetchApiData: GetAllMoviesService,
     public fetchUser: GetUserService,
+    public getDir: GetDirectorService,
+    public addFav: AddFavouriteMovieService,
+    public unFav: UnfavouriteOneMovieService,
     public dialog: MatDialog,
     public snackBar: MatSnackBar
   ) { }
@@ -61,6 +67,100 @@ export class MovieCardComponent implements OnInit {
         panelClass: 'genre-dialog'
       }
     )
+  }
+
+  showDirectorDialog(
+    name: string,
+    bio: string,
+    birth: string,
+    death: string
+  ): void {
+    this.dialog.open(
+      DirectorDialogComponent,
+      {
+        data: {
+          name,
+          bio,
+          birth,
+          death
+        },
+        panelClass: 'director-dialog'
+      }
+    )
+  }
+
+  showDetailsDialog(
+    title: string,
+    imagePath: string,
+    description: string,
+    director: string,
+    genre: string
+  ): void {
+    this.dialog.open(
+      DetailsDialogComponent,
+      {
+        data: {
+          title,
+          imagePath,
+          description,
+          director,
+          genre
+        },
+        panelClass: 'details-dialog'
+      }
+    )
+  }
+
+
+
+  addFavourite(id: string, title: string): void {
+    this.addFav.addFavouriteMovie(id).subscribe(
+      () => {
+        this.snackBar.open(
+          `${title} is favourited!`,
+          'OK',
+          {
+            duration: 2000
+          }
+        )
+      }
+    )
+  }
+
+  isFavourite(movieID: string): boolean {
+    console.log(`${movieID} is Favourited`);
+    return this.favouriteMovieIDs.includes(movieID);
+  }
+
+  toggleFavMovie(id: string): any {
+    if (this.isFavourite(id)) {
+      this.unFav.unfavouriteOneMovie(id).subscribe(
+        (res: any) => {
+          this.snackBar.open(
+            'Unfavourited!',
+            'OK',
+            {
+              duration: 2000
+            }
+          )
+        }
+      )
+      const index = this.favouriteMovieIDs.indexOf(id)
+      return this.favouriteMovieIDs.splice(index, 1)
+    } else {
+      this.addFav.addFavouriteMovie(id).subscribe(
+        (res: any) => {
+          this.snackBar.open(
+            'Favourited!',
+            'OK',
+            {
+              duration: 2000
+            }
+          )
+        }
+      )
+      return this.favouriteMovieIDs.push(id)
+    }
   }
 
 }

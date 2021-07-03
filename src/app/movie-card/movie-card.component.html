@@ -17,7 +17,7 @@
       </button>
     </mat-card-header>
     <img src={{movie.ImagePath}} alt={{movie.Title}} />
-    <mat-card-actions>
+    <mat-card-actions class="movie-card-actions-container">
       <button class="card-btn" mat-stroked-button (click)='showGenreDialog(movie.Genre.Name,movie.Genre.Description)'>
         Genre
       </button>

@@ -1,18 +1,22 @@
+@use "../../mixin/_responsive-mixin.scss" as responsiveMixin;
+
 .navbar {
-  position: sticky;
-  top: 0;
-  width: 100%;
-  z-index: 100;
   // background: linear-gradient(to bottom, #caacff, #b388ff);
-  background: #ece9e6;
-  background: linear-gradient(to bottom, #ffffff, #ece9e6);
+  // background: linear-gradient(to bottom, #ffffff, #ece9e6);
+  background: #0876c0;
+  height: auto;
+  @include responsiveMixin.screenSize(screen-s) {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+    display: flex;
+  }
 }
 
 .nav-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
   padding: 12px;
+  flex: 1 0 10rem;
 }
 
 .app-title {
@@ -22,13 +26,37 @@
   letter-spacing: 2px;
 }
 
-button {
+.nav-btn {
   font-size: 17px;
   letter-spacing: 1px;
-  color: #fff;
+  color: #dadada;
+  cursor: pointer;
   font-weight: 700;
+  text-decoration: none;
+  font-weight: 200;
+  margin: 2rem auto;
 }
 
 .nav-links {
-  margin-right: 35px;
+  align-items: center;
+  display: flex;
+  flex: 0 0 20rem;
+  justify-content: space-around;
+}
+
+.h1 {
+  margin: 1rem 0 1rem;
+  text-align: center;
+  font-size: 3rem;
+  font-weight: 500;
+
+  @include responsiveMixin.screenSize(screen-s) {
+    text-align: left;
+    margin: 1rem;
+  }
+}
+
+.logo-main {
+  text-decoration: none;
+  color: #cce1f8;
 }

@@ -1,0 +1,14 @@
+.details-container {
+  display: flex;
+  flex-flow: column;
+  width: 35rem;
+
+  .h1 {
+    font-size: 2.5rem;
+    margin-top: 3rem;
+  }
+
+  .close-btn {
+    align-self: flex-end;
+  }
+}

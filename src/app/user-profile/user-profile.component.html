@@ -3,21 +3,21 @@
 <div class="profile-card-container">
   <div class="profile-card-wrapper">
     <div class="profile-info">
-      <h1>Profile Data</h1>
+      <h1 class="h1">Profile Data</h1>
       <div class="general-info">
-        <p class="username">
+        <p class="label">
           Username
         </p>
         <p>
           {{user.Username}}
         </p>
-        <p class="email">
+        <p class="label">
           Email
         </p>
         <p>
           {{user.Email}}
         </p>
-        <p class="birthday">
+        <p class="label">
           Birthday
         </p>
         <p>
@@ -37,7 +37,7 @@
   </div>
 
   <div class="favouriteMovies">
-    <h1>
+    <h1 class="h1">
       My Favourite Movies
     </h1>
     <div class="favouriteMovieCard" *ngFor="let favouriteMovie of favouriteMovies">

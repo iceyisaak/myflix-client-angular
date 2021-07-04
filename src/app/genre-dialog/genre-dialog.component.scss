@@ -1,0 +1,9 @@
+.genre-container {
+  display: flex;
+  flex-flow: column;
+  // width: 50%;
+
+  .close-btn {
+    align-self: flex-end;
+  }
+}

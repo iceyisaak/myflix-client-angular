@@ -112,10 +112,10 @@ export class UserProfileComponent implements OnInit {
   }
 
 
-  // profileUpdateDialog(): void {
-  //   this.dialog.open(
-  //     ''
-  //   )
-  // }
+  profileUpdateDialog(): void {
+    // this.dialog.open(
+    //   ''
+    // )
+  }
 
 }

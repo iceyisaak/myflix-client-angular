@@ -1,4 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+
+import { MatDialogRef } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
+
+import { EditUserService } from '../fetch-api-data.service';
 
 @Component({
   selector: 'app-user-profile-update',
@@ -7,9 +12,42 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserProfileUpdateComponent implements OnInit {
 
-  constructor() { }
+  @Input() userData = {
+    Username: '',
+    Password: '',
+    Email: '',
+    Birthday: ''
+  }
+
+  constructor(
+    public editUserData: EditUserService,
+    public dialogRef: MatDialogRef<UserProfileUpdateComponent>,
+    public snackBar: MatSnackBar
+  ) { }
 
   ngOnInit(): void {
+  }
+
+  editUser(): void {
+    this.editUserData.editUser(this.userData).subscribe(
+      (res) => {
+        this.dialogRef.close()
+        localStorage.setItem('user', res.Username)
+        this.snackBar.open(
+          'Profile Updated.',
+          'OK',
+          {
+            duration: 2000
+          }
+        )
+      }
+    )
+    setTimeout(
+      () => {
+        window.location.reload()
+      },
+      1000
+    )
   }
 
 }

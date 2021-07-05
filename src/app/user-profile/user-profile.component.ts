@@ -9,7 +9,8 @@ import { DeleteUserService } from '../fetch-api-data.service'
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialog } from '@angular/material/dialog';
 
-// import { }
+import { UserProfileUpdateComponent } from '../user-profile-update/user-profile-update.component';
+
 
 @Component({
   selector: 'app-user-profile',
@@ -113,9 +114,12 @@ export class UserProfileComponent implements OnInit {
 
 
   profileUpdateDialog(): void {
-    // this.dialog.open(
-    //   ''
-    // )
+    this.dialog.open(
+      UserProfileUpdateComponent,
+      {
+        panelClass: 'update-dialog'
+      }
+    )
   }
 
 }

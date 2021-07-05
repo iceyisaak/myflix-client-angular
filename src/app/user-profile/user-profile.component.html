@@ -21,7 +21,7 @@
           Birthday
         </p>
         <p>
-          {{user.Birthday}}
+          {{user.Birthday | date: 'dd/MM/yyyy':'UTC'}}
         </p>
       </div>
     </div>

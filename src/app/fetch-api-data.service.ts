@@ -340,9 +340,10 @@ export class EditUserService {
   editUser(userDetails: any): Observable<any> {
 
     const token = localStorage.getItem('token')
+    const user = localStorage.getItem('user')
 
     return this.http.put(
-      `${apiUrl}users/:Username/`,
+      `${apiUrl}users/${user}/`,
       userDetails,
       {
         headers: new HttpHeaders({

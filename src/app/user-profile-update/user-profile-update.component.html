@@ -1,1 +1,45 @@
-<p>user-profile-update works!</p>
+<div class="update-profile">
+  <div class="update-profile-container">
+    <button mat-icon-button color='dark' [mat-dialog-close]='true' class="close-btn">
+      <mat-icon>
+        close
+      </mat-icon>
+    </button>
+    <header class="header">
+      <h1 class="h1">Update User Data</h1>
+    </header>
+    <mat-card-content>
+      <form class="update-form">
+        <div class="form-control">
+          <label for="username">
+            Username
+          </label>
+          <input class='form-input' name="username" type="text" [(ngModel)]='userData.Username' required />
+        </div>
+        <div class="form-control">
+          <label for="password">
+            Password
+          </label>
+          <input class='form-input' name='password' type="password" [(ngModel)]='userData.Password' required />
+        </div>
+        <div class="form-control">
+          <label for="email">
+            Email
+          </label>
+          <input class='form-input' name='email' type="email" [(ngModel)]='userData.Email' required />
+        </div>
+        <div class="form-control">
+          <label for="birthday">
+            Birthday
+          </label>
+          <input class='form-input' name='birthday' type="date" [(ngModel)]='userData.Birthday' />
+        </div>
+      </form>
+    </mat-card-content>
+    <mat-card-actions>
+      <button class="btn" mat-raised-button (click)='editUser()'>
+        Update
+      </button>
+    </mat-card-actions>
+  </div>
+</div>

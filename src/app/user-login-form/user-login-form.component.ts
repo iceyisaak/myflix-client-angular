@@ -43,8 +43,8 @@ export class UserLoginFormComponent implements OnInit {
         localStorage.setItem('token', response.token)
 
         this.snackBar.open(
-          response,
           'You are now logged in.',
+          'OK',
           {
             duration: 2000
           }

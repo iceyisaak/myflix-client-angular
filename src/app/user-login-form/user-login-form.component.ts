@@ -10,6 +10,10 @@ import { UserLoginService } from '../fetch-api-data.service';
   templateUrl: './user-login-form.component.html',
   styleUrls: ['./user-login-form.component.scss']
 })
+
+/**
+ * class UserLoginFormComponent - Lets existing users login to the system
+ */
 export class UserLoginFormComponent implements OnInit {
 
   @Input() loginData = {
@@ -17,6 +21,13 @@ export class UserLoginFormComponent implements OnInit {
     Password: ''
   }
 
+  /**
+   * 
+   * @param userLogin 
+   * @param dialogRef 
+   * @param snackBar 
+   * @param router 
+   */
   constructor(
     public userLogin: UserLoginService,
     public dialogRef: MatDialogRef<UserLoginFormComponent>,
@@ -28,6 +39,9 @@ export class UserLoginFormComponent implements OnInit {
   }
 
 
+  /**
+   * loginUser() - Logs the user into the system
+   */
   loginUser(): void {
 
     this.userLogin.userLogin(this.loginData).subscribe(

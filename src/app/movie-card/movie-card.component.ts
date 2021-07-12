@@ -17,11 +17,25 @@ import { DetailsDialogComponent } from '../details-dialog/details-dialog.compone
   templateUrl: './movie-card.component.html',
   styleUrls: ['./movie-card.component.scss']
 })
+
+/**
+ * class MovieCardComponent - Shows the movies available in the Database
+ */
 export class MovieCardComponent implements OnInit {
 
   movies: any[] = []
   favouriteMovieIDs: any[] = []
 
+  /**
+   * 
+   * @param fetchApiData 
+   * @param fetchUser 
+   * @param getDir 
+   * @param addFav 
+   * @param unFav 
+   * @param dialog 
+   * @param snackBar 
+   */
   constructor(
     public fetchApiData: GetAllMoviesService,
     public fetchUser: GetUserService,
@@ -32,11 +46,17 @@ export class MovieCardComponent implements OnInit {
     public snackBar: MatSnackBar
   ) { }
 
+  /**
+   * ngOnInit() - Initialises the app right after the user successfully logs into the system
+   */
   ngOnInit(): void {
     this.getMovies();
     this.getFavouriteMovies();
   }
 
+  /**
+   * getMovies() - Get movies from the API 
+   */
   getMovies(): void {
     this.fetchApiData.getAllMovies().subscribe(
       (res: any) => {
@@ -47,6 +67,9 @@ export class MovieCardComponent implements OnInit {
     )
   }
 
+  /**
+   * getFavouriteMovies() - Get user's favourited movies
+   */
   getFavouriteMovies(): void {
     const user = localStorage.getItem('user');
     this.fetchUser.getUser(user).subscribe(
@@ -56,6 +79,11 @@ export class MovieCardComponent implements OnInit {
     )
   }
 
+  /**
+   * showGenreDialog() - Get the Movie Genre from API
+   * @param name 
+   * @param description 
+   */
   showGenreDialog(name: string, description: string): void {
     this.dialog.open(
       GenreDialogComponent,
@@ -69,6 +97,13 @@ export class MovieCardComponent implements OnInit {
     )
   }
 
+  /**
+   * showDirectorDialog() - Get the Movie Director from API
+   * @param name 
+   * @param bio 
+   * @param birth 
+   * @param death 
+   */
   showDirectorDialog(
     name: string,
     bio: string,
@@ -89,6 +124,15 @@ export class MovieCardComponent implements OnInit {
     )
   }
 
+
+  /**
+   * showDetailsDialog() - Get the Movie Details from API
+   * @param title 
+   * @param imagePath 
+   * @param description 
+   * @param director 
+   * @param genre 
+   */
   showDetailsDialog(
     title: string,
     imagePath: string,
@@ -112,7 +156,11 @@ export class MovieCardComponent implements OnInit {
   }
 
 
-
+  /**
+   * addFavourite() - Add Movie to User's List of Favourite
+   * @param id 
+   * @param title 
+   */
   addFavourite(id: string, title: string): void {
     this.addFav.addFavouriteMovie(id).subscribe(
       () => {
@@ -127,11 +175,21 @@ export class MovieCardComponent implements OnInit {
     )
   }
 
+  /**
+   * isFavourit() - Set the state of the movie to be Favourited / Unfavourited
+   * @param movieID 
+   * @returns 
+   */
   isFavourite(movieID: string): boolean {
     console.log(`${movieID} is Favourited`);
     return this.favouriteMovieIDs.includes(movieID);
   }
 
+  /**
+   * toggleFavMovie() - Switch between the state of movie to be Favourite / Unfavourited
+   * @param id 
+   * @returns favouriteMovieIDs 
+   */
   toggleFavMovie(id: string): any {
     if (this.isFavourite(id)) {
       this.unFav.unfavouriteOneMovie(id).subscribe(

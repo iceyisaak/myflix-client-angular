@@ -10,6 +10,10 @@ import { EditUserService } from '../fetch-api-data.service';
   templateUrl: './user-profile-update.component.html',
   styleUrls: ['./user-profile-update.component.scss']
 })
+
+/**
+ * class UserProfileUpdateComponent - Lets exiting users update their profiles
+ */
 export class UserProfileUpdateComponent implements OnInit {
 
   @Input() userData = {
@@ -19,6 +23,13 @@ export class UserProfileUpdateComponent implements OnInit {
     Birthday: ''
   }
 
+
+  /**
+   * 
+   * @param editUserData 
+   * @param dialogRef 
+   * @param snackBar 
+   */
   constructor(
     public editUserData: EditUserService,
     public dialogRef: MatDialogRef<UserProfileUpdateComponent>,
@@ -28,6 +39,9 @@ export class UserProfileUpdateComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  /**
+   * editUser() - Update the user's data in the Database
+   */
   editUser(): void {
     this.editUserData.editUser(this.userData).subscribe(
       (res) => {

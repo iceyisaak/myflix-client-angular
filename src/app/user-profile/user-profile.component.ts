@@ -18,12 +18,27 @@ import { UserProfileUpdateComponent } from '../user-profile-update/user-profile-
   styleUrls: ['./user-profile.component.scss']
 })
 
+
+/**
+ * class UserProfileComponent - Lets user see their current profile data
+ */
 export class UserProfileComponent implements OnInit {
 
   user: any = {};
   movies: any[] = [];
   favouriteMovies: any = []
 
+
+  /**
+   * 
+   * @param router 
+   * @param snackBar 
+   * @param dialog 
+   * @param fetchMovies 
+   * @param fetchUser 
+   * @param fetchUnfavourite 
+   * @param deleteUserService 
+   */
   constructor(
     public router: Router,
     public snackBar: MatSnackBar,

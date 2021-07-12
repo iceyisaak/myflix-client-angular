@@ -8,6 +8,10 @@ import { UserRegistrationService } from '../fetch-api-data.service';
   templateUrl: './user-registration-form.component.html',
   styleUrls: ['./user-registration-form.component.scss']
 })
+
+/**
+ * class UserRegistrationFormComponent - Lets new users register into the system
+ */
 export class UserRegistrationFormComponent implements OnInit {
 
   @Input() userData = {
@@ -17,6 +21,13 @@ export class UserRegistrationFormComponent implements OnInit {
     Birthday: ''
   }
 
+
+  /**
+   * 
+   * @param userRegistration 
+   * @param dialogRef 
+   * @param snackBar 
+   */
   constructor(
     public userRegistration: UserRegistrationService,
     public dialogRef: MatDialogRef<UserRegistrationFormComponent>,
@@ -27,7 +38,9 @@ export class UserRegistrationFormComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  // registerUser() - Sends form to backend
+  /**
+   * registerUser() - Sends form to backend 
+   * */
   registerUser(): void {
     this.userRegistration.userRegistration(this.userData).subscribe(
       (result) => {

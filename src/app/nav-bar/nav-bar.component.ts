@@ -7,8 +7,18 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   templateUrl: './nav-bar.component.html',
   styleUrls: ['./nav-bar.component.scss']
 })
+
+/**
+ * class NavBarComponent - Shows NavBar at the top of the screen
+ */
 export class NavBarComponent implements OnInit {
 
+
+  /**
+   * 
+   * @param snackBar 
+   * @param router 
+   */
   constructor(
     public snackBar: MatSnackBar,
     public router: Router
@@ -17,6 +27,9 @@ export class NavBarComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  /**
+   * logOut() - Logs the users out of the system
+   */
   logOut(): void {
     localStorage.clear();
     this.router.navigate(
